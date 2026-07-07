@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tools, Data Sets &amp; Source Code — Tachyon Resilient Modeling</title>
+  <meta name="description" content="Released software tools, open datasets, and source code repositories from the Tachyon Resilient Modeling project." />
+  <link rel="icon" type="image/svg+xml" href="assets/logo.svg" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav">
+      <a class="brand" href="index.html">
+        <img class="logo" src="assets/logo.svg" alt="" />
+        Tachyon Resilient Modeling
+      </a>
+      <button class="nav-toggle" aria-label="Toggle navigation">&#9776;</button>
+      <ul class="nav-links">
+        <li><a href="index.html">Overview</a></li>
+        <li><a href="personnel.html">Personnel</a></li>
+        <li><a href="publications.html">Publications</a></li>
+        <li><a href="tools.html">Tools &amp; Data</a></li>
+        <li><a href="about.html">About</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="section">
+      <h2>Tools, Data Sets &amp; Source Code</h2>
+      <p class="lead">
+        The project releases its software, datasets, and source code openly.
+        Everything below is intended to be reproducible and reusable by the
+        wider research community.
+      </p>
+      <p class="note">
+        The resources below are placeholders. Replace them with the project's
+        real tools, datasets, and repositories, including working links and
+        licenses.
+      </p>
+    </section>
+
+    <section class="section">
+      <h2>Software Tools</h2>
+      <div class="grid grid-2">
+        <div class="card">
+          <div class="resource">
+            <span class="kind code">tool</span>
+            <div>
+              <h3 style="margin-bottom:0.2rem">tachyon-core</h3>
+              <p>
+                Core library for resilient model composition, uncertainty
+                propagation, and fault-tolerant execution. Python and C++ APIs.
+              </p>
+              <p>
+                <a href="https://github.com/tachyon-org">Repository</a> &middot;
+                <a href="#">Docs</a> &middot; <span>License: Apache-2.0</span>
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="resource">
+            <span class="kind code">tool</span>
+            <div>
+              <h3 style="margin-bottom:0.2rem">tachyon-bench</h3>
+              <p>
+                Command-line benchmarking harness for evaluating resilience and
+                reproducibility of modeling pipelines.
+              </p>
+              <p>
+                <a href="https://github.com/tachyon-org">Repository</a> &middot;
+                <a href="#">Docs</a> &middot; <span>License: MIT</span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Data Sets</h2>
+      <div class="grid grid-2">
+        <div class="card">
+          <div class="resource">
+            <span class="kind data">data</span>
+            <div>
+              <h3 style="margin-bottom:0.2rem">Resilience Benchmark Suite v1</h3>
+              <p>
+                Curated reference problems with fault-injection scenarios and
+                ground-truth solutions for evaluating resilient methods.
+              </p>
+              <p>
+                <a href="#">Download</a> &middot; <a href="#">DOI</a> &middot;
+                <span>License: CC-BY-4.0</span>
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="resource">
+            <span class="kind data">data</span>
+            <div>
+              <h3 style="margin-bottom:0.2rem">Uncertainty Propagation Dataset</h3>
+              <p>
+                Input/output ensembles from coupled multiphysics runs used in the
+                project's UQ studies.
+              </p>
+              <p>
+                <a href="#">Download</a> &middot; <a href="#">DOI</a> &middot;
+                <span>License: CC-BY-4.0</span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Source Code Repositories</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Repository</th>
+              <th>Description</th>
+              <th>Language</th>
+              <th>License</th>
+              <th>Link</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>tachyon-core</code></td>
+              <td>Core resilient modeling library</td>
+              <td>C++ / Python</td>
+              <td>Apache-2.0</td>
+              <td><a href="https://github.com/tachyon-org">GitHub</a></td>
+            </tr>
+            <tr>
+              <td><code>tachyon-bench</code></td>
+              <td>Benchmarking harness</td>
+              <td>Python</td>
+              <td>MIT</td>
+              <td><a href="https://github.com/tachyon-org">GitHub</a></td>
+            </tr>
+            <tr>
+              <td><code>tachyon-datasets</code></td>
+              <td>Dataset generation and packaging scripts</td>
+              <td>Python</td>
+              <td>MIT</td>
+              <td><a href="https://github.com/tachyon-org">GitHub</a></td>
+            </tr>
+            <tr>
+              <td><code>tachyon-org-website</code></td>
+              <td>This website</td>
+              <td>HTML / CSS / JS</td>
+              <td>MIT</td>
+              <td><a href="https://github.com/tachyon-org/tachyon-org-website">GitHub</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Reproducibility</h2>
+      <p>
+        Each release is versioned and archived with a permanent DOI. Datasets
+        include checksums and provenance metadata, and every tool ships with a
+        <code>CITATION.cff</code> file and example workflows so results can be
+        reproduced end to end.
+      </p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div>&copy; <span id="year">2026</span> Tachyon Resilient Modeling Project</div>
+      <div>
+        <a href="sitemap.html">Sitemap</a> &middot;
+        <a href="about.html">About</a> &middot;
+        <a href="https://github.com/tachyon-org">GitHub</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+</body>
+</html>

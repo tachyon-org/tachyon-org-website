@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About — Tachyon Resilient Modeling</title>
+  <meta name="description" content="About this website: technology, dependencies, hosting, and licensing." />
+  <link rel="icon" type="image/svg+xml" href="assets/logo.svg" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav">
+      <a class="brand" href="index.html">
+        <img class="logo" src="assets/logo.svg" alt="" />
+        Tachyon Resilient Modeling
+      </a>
+      <button class="nav-toggle" aria-label="Toggle navigation">&#9776;</button>
+      <ul class="nav-links">
+        <li><a href="index.html">Overview</a></li>
+        <li><a href="personnel.html">Personnel</a></li>
+        <li><a href="publications.html">Publications</a></li>
+        <li><a href="tools.html">Tools &amp; Data</a></li>
+        <li><a href="about.html">About</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="section">
+      <h2>About This Website</h2>
+      <p class="lead">
+        This is the public website of the Tachyon Resilient Modeling project. It
+        is a static site &mdash; there is no server-side application or database.
+      </p>
+    </section>
+
+    <section class="section">
+      <h2>Technology &amp; Dependencies</h2>
+      <p>
+        The site is intentionally built with a minimal, dependency-free stack so
+        it is fast, portable, and cheap to host as static files.
+      </p>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Component</th><th>Technology</th><th>Notes</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Markup</td><td>Static HTML5</td><td>One file per page</td></tr>
+            <tr><td>Styling</td><td>Hand-written CSS</td><td>Single <code>css/style.css</code>, no framework or CDN</td></tr>
+            <tr><td>Interactivity</td><td>Vanilla JavaScript</td><td>Single <code>js/main.js</code> for nav toggle only</td></tr>
+            <tr><td>Assets</td><td>Inline SVG</td><td>Logo and icons; no external fonts or images</td></tr>
+            <tr><td>Hosting</td><td>Amazon S3</td><td>Static website hosting; optional CloudFront CDN</td></tr>
+            <tr><td>Deployment</td><td>AWS CLI</td><td>Config-driven shell scripts in <code>deploy/</code></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="note">
+        No third-party runtime dependencies are loaded by visitors' browsers.
+        The site has no trackers, no external fonts, and no analytics by default.
+      </p>
+    </section>
+
+    <section class="section">
+      <h2>Hosting &amp; Deployment</h2>
+      <p>
+        The site is deployed to an Amazon S3 bucket configured for static website
+        hosting, optionally fronted by Amazon CloudFront for HTTPS and caching.
+        Deployment is handled by the scripts in the <code>deploy/</code>
+        directory, driven by <code>deploy/config.yaml</code> with command-line
+        and environment-variable overrides.
+      </p>
+    </section>
+
+    <section class="section">
+      <h2>License</h2>
+      <p>
+        The website source is released under the MIT License. Project software,
+        datasets, and publications carry their own licenses as noted on the
+        <a href="tools.html">Tools, Data Sets &amp; Source Code</a> page.
+      </p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div>&copy; <span id="year">2026</span> Tachyon Resilient Modeling Project</div>
+      <div>
+        <a href="sitemap.html">Sitemap</a> &middot;
+        <a href="about.html">About</a> &middot;
+        <a href="https://github.com/tachyon-org">GitHub</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+</body>
+</html>

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tachyon Resilient Modeling</title>
+  <meta name="description" content="Tachyon Resilient Modeling — methods and software for fault-tolerant, uncertainty-aware computational modeling of complex systems." />
+  <link rel="icon" type="image/svg+xml" href="assets/logo.svg" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav">
+      <a class="brand" href="index.html">
+        <img class="logo" src="assets/logo.svg" alt="" />
+        Tachyon Resilient Modeling
+      </a>
+      <button class="nav-toggle" aria-label="Toggle navigation">&#9776;</button>
+      <ul class="nav-links">
+        <li><a href="index.html">Overview</a></li>
+        <li><a href="personnel.html">Personnel</a></li>
+        <li><a href="publications.html">Publications</a></li>
+        <li><a href="tools.html">Tools &amp; Data</a></li>
+        <li><a href="about.html">About</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="eyebrow">Resilient Computational Science</div>
+      <h1>Tachyon Resilient Modeling</h1>
+      <p>
+        Methods, tools, and open datasets for building computational models
+        that stay accurate and dependable under uncertainty, faults, and
+        incomplete data.
+      </p>
+      <div class="btn-row">
+        <a class="btn btn-primary" href="tools.html">Explore Tools &amp; Data</a>
+        <a class="btn btn-ghost" href="publications.html">Read the Research</a>
+      </div>
+    </div>
+  </section>
+
+  <main>
+    <section class="section" id="about">
+      <h2>Project Description</h2>
+      <p class="lead">
+        The Tachyon Resilient Modeling project develops the theory, algorithms,
+        and software needed to make large-scale computational models
+        <em>resilient</em> &mdash; able to produce trustworthy predictions even
+        when inputs are noisy, components fail, or the system being modeled
+        drifts away from its assumptions.
+      </p>
+      <p>
+        Modern scientific and engineering models are increasingly assembled from
+        many coupled components running across heterogeneous, failure-prone
+        computing environments. Our work spans uncertainty quantification,
+        fault-tolerant numerical methods, and reproducible modeling workflows so
+        that results remain valid and explainable as scale and complexity grow.
+        We release the resulting tools, datasets, and source code openly so the
+        broader research community can reproduce and build on our findings.
+      </p>
+      <p class="note">
+        This site collects the project's people, publications, and released
+        research artifacts. Content marked as a placeholder should be replaced
+        with the project's specific details before public launch.
+      </p>
+    </section>
+
+    <section class="section" id="focus">
+      <h2>Research Focus Areas</h2>
+      <div class="grid grid-3">
+        <div class="card">
+          <div class="icon">&#127777;&#65039;</div>
+          <h3>Uncertainty Quantification</h3>
+          <p>
+            Rigorous, scalable propagation of uncertainty through coupled models
+            so predictions come with honest, calibrated error bars.
+          </p>
+        </div>
+        <div class="card">
+          <div class="icon">&#128737;&#65039;</div>
+          <h3>Fault-Tolerant Methods</h3>
+          <p>
+            Numerical algorithms and workflows that detect, absorb, and recover
+            from hardware, data, and component failures at scale.
+          </p>
+        </div>
+        <div class="card">
+          <div class="icon">&#128260;</div>
+          <h3>Reproducible Workflows</h3>
+          <p>
+            Provenance-tracked, portable modeling pipelines that produce the
+            same results across platforms and over time.
+          </p>
+        </div>
+        <div class="card">
+          <div class="icon">&#128202;</div>
+          <h3>Adaptive Modeling</h3>
+          <p>
+            Models that self-monitor and adjust fidelity as conditions and data
+            availability change during a run.
+          </p>
+        </div>
+        <div class="card">
+          <div class="icon">&#129518;</div>
+          <h3>Open Benchmarks</h3>
+          <p>
+            Curated datasets and reference problems for evaluating resilience
+            and reproducibility across the community.
+          </p>
+        </div>
+        <div class="card">
+          <div class="icon">&#9889;</div>
+          <h3>High-Performance Computing</h3>
+          <p>
+            Implementations tuned for HPC and heterogeneous accelerators with an
+            emphasis on scalability and portability.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="explore">
+      <h2>Explore the Project</h2>
+      <div class="grid grid-3">
+        <a class="card" href="personnel.html">
+          <h3>Personnel &rarr;</h3>
+          <p>The investigators, researchers, and collaborators behind the project.</p>
+        </a>
+        <a class="card" href="publications.html">
+          <h3>Publications &rarr;</h3>
+          <p>Papers, preprints, and technical reports from the project.</p>
+        </a>
+        <a class="card" href="tools.html">
+          <h3>Tools, Data &amp; Code &rarr;</h3>
+          <p>Released software, open datasets, and source repositories.</p>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div>&copy; <span id="year">2026</span> Tachyon Resilient Modeling Project</div>
+      <div>
+        <a href="sitemap.html">Sitemap</a> &middot;
+        <a href="about.html">About</a> &middot;
+        <a href="https://github.com/tachyon-org">GitHub</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+</body>
+</html>

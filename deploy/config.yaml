@@ -1,0 +1,29 @@
+# Deployment configuration for the Tachyon Resilient Modeling website.
+#
+# Values here are the lowest priority. They can be overridden by
+# environment variables and, above those, by command-line flags:
+#
+#   command-line flag  >  environment variable  >  this file  >  built-in default
+#
+# Environment variable names are the upper-cased key with a TACHYON_ prefix,
+# e.g. `bucket` -> TACHYON_BUCKET, `region` -> TACHYON_REGION.
+
+# Name of the S3 bucket that will host the site (must be globally unique).
+bucket: tachyon-resilient-modeling
+
+# AWS region for the bucket.
+region: us-west-2
+
+# AWS CLI named profile to use (leave blank to use the default profile).
+profile: ""
+
+# Local directory containing the site files to upload.
+source_dir: web
+
+# Index and error documents for S3 static website hosting.
+index_document: index.html
+error_document: error.html
+
+# Optional CloudFront distribution ID. If set, `deploy-aws.sh` will issue a
+# cache invalidation after uploading. Leave blank to skip.
+cloudfront_distribution_id: ""
