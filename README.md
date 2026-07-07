@@ -189,6 +189,64 @@ Pass `--no-www` for the apex domain only, or `--hosted-zone-id` to override
 auto-detection. After it runs, allow a few minutes for the distribution to
 redeploy and DNS to propagate, then the site is live at `https://<domain>`.
 
+## Troubleshooting
+
+### The site loads on some networks but not others
+
+Almost always a **DNS caching** problem on the network where it fails, not a
+problem with the site or AWS. When a custom domain is newly delegated, a
+resolver that queried the name *before* delegation may cache the "does not
+exist" answer (`NXDOMAIN`) for up to its negative-cache TTL (commonly ~1 hour,
+set by the parent zone's SOA minimum).
+
+**First, confirm the site itself is fine** by bypassing DNS entirely — hit a
+CloudFront edge IP directly with the correct hostname (CloudFront routes by
+hostname/SNI, not IP):
+
+```bash
+# Get a current CloudFront edge IP for the distribution
+dig +short d2fu1nnw11krft.cloudfront.net A | head -1
+
+# Test the site against that IP, bypassing your resolver
+curl -sI --resolve tachyon-research.org:443:<edge-ip> https://tachyon-research.org/
+```
+
+A `200 OK` here means the distribution, certificate, and content are all
+working, and the issue is purely DNS resolution on that network.
+
+**Diagnose the resolver** that is failing:
+
+```bash
+dig tachyon-research.org A                 # what your network's resolver returns
+dig +short @1.1.1.1 tachyon-research.org   # what a public resolver returns
+scutil --dns | grep 'nameserver\['         # which resolver(s) macOS is using
+```
+
+If your resolver returns `NXDOMAIN` while a public one returns CloudFront IPs,
+it is holding a stale negative cache.
+
+**Fixes:**
+
+- **Wait** for the negative cache to expire (up to ~1 hour). This is the real
+  fix and needs no changes.
+- **Flush the local macOS cache** (does not help if an upstream resolver is the
+  one caching, but harmless):
+  ```bash
+  sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder
+  ```
+- **Unblock immediately for testing** with a temporary `/etc/hosts` entry
+  (remove it once DNS clears — edge IPs rotate):
+  ```bash
+  echo "<edge-ip> tachyon-research.org www.tachyon-research.org" | sudo tee -a /etc/hosts
+  # later:
+  sudo sed -i '' '/tachyon-research.org/d' /etc/hosts
+  ```
+
+> On restricted networks (e.g. Fermilab), outbound DNS to public resolvers
+> (`1.1.1.1`, `8.8.8.8`) may be firewalled, so you cannot route around the local
+> resolver — you must wait for its cache to expire or ask that network's IT to
+> flush it.
+
 ## License
 
 Released under the [MIT License](LICENSE).
