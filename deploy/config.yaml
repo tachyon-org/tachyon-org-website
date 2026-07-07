@@ -14,6 +14,10 @@ bucket: tachyon-resilient-modeling
 # AWS region for the bucket.
 region: us-west-2
 
+# Custom domain to attach via CloudFront + Route 53 (setup-domain.sh).
+# The apex domain and its www subdomain are configured by default.
+domain: tachyon-research.org
+
 # AWS CLI named profile to use (leave blank to use the default profile).
 profile: ""
 

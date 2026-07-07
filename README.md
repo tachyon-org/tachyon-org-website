@@ -81,6 +81,7 @@ Edit `deploy/config.yaml`:
 ```yaml
 bucket: tachyon-resilient-modeling   # must be globally unique
 region: us-west-2
+domain: tachyon-research.org          # custom domain for setup-domain.sh
 profile: ""                          # AWS CLI named profile, or blank for default
 source_dir: web
 index_document: index.html
@@ -156,7 +157,7 @@ Once the distribution exists and your domain's **public hosted zone** is in
 Route 53, attach the domain with:
 
 ```bash
-./deploy/setup-domain.sh --domain tachyon.org        # add --wait to block
+./deploy/setup-domain.sh --domain tachyon-research.org   # add --wait to block
 ```
 
 This script:

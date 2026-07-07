@@ -35,7 +35,7 @@ Usage: setup-domain.sh [options]
 Attach a custom domain to the site's CloudFront distribution.
 
 Options:
-  -d, --domain NAME        Apex domain to attach (default: tachyon.org)
+  -d, --domain NAME        Apex domain to attach (default: from config.yaml)
       --no-www             Do not also attach the www.<domain> subdomain
       --distribution ID     CloudFront distribution ID (default: from config.yaml)
       --hosted-zone-id ID   Route 53 hosted zone ID (default: auto-detect by domain)
@@ -62,7 +62,7 @@ while [ $# -gt 0 ]; do
   esac
 done
 
-DOMAIN="$(resolve domain "$CLI_DOMAIN" "tachyon.org")"
+DOMAIN="$(resolve domain "$CLI_DOMAIN" "tachyon-research.org")"
 PROFILE="$(resolve profile "$CLI_PROFILE" "")"
 DIST_ID="$(resolve cloudfront_distribution_id "$CLI_DIST" "")"
 
