@@ -42,6 +42,7 @@ and reliably on **Amazon S3** static website hosting, optionally fronted by
     ├── config.yaml       # deployment configuration
     ├── common.sh         # shared helpers (config + AWS wrappers)
     ├── setup-aws.sh      # one-time S3 bucket provisioning
+    ├── setup-cloudfront.sh # optional: HTTPS/CDN via CloudFront + OAC
     └── deploy-aws.sh     # upload the site to S3
 ```
 
@@ -121,13 +122,39 @@ TACHYON_PROFILE=tachyon ./deploy/deploy-aws.sh
 
 Run any script with `--help` for the full list of options.
 
-## HTTPS and Custom Domains
+## HTTPS with CloudFront
 
-The S3 website endpoint is HTTP-only. For HTTPS and a custom domain, put a
-**CloudFront** distribution in front of the bucket, request a certificate in
-**AWS Certificate Manager**, and point your domain at the distribution with
-**Route 53** (or your DNS provider). Set `cloudfront_distribution_id` in
-`config.yaml` so deploys automatically invalidate the CDN cache.
+The raw S3 website endpoint is HTTP-only. To serve the site over HTTPS, run:
+
+```bash
+./deploy/setup-cloudfront.sh          # returns immediately; add --wait to block
+```
+
+This provisions a **CloudFront** distribution using the AWS-recommended secure
+pattern:
+
+- an **Origin Access Control (OAC)** so only CloudFront can read the bucket;
+- the bucket is **locked down** (public-read removed, public access re-blocked),
+  so the site is reachable *only* through CloudFront (pass `--keep-public` to
+  skip this);
+- **HTTPS** via the default `*.cloudfront.net` certificate — no custom domain or
+  ACM certificate required;
+- viewer requests **redirect to HTTPS**, are compressed, and are cached;
+- origin `403`/`404` responses are served as `/error.html`.
+
+The new distribution ID is written back into `config.yaml`, so subsequent
+`deploy-aws.sh` runs automatically invalidate the CDN cache. A freshly created
+distribution takes 5–15 minutes to finish deploying before its URL is live.
+
+> After running this, do **not** re-run `setup-aws.sh` without `--no-public` —
+> it would re-open the bucket to the public.
+
+### Custom domain
+
+For a custom domain (e.g. `www.example.org`), request a certificate in **AWS
+Certificate Manager** (in `us-east-1`), add the domain as an alternate name on
+the distribution, and point your DNS at the CloudFront domain with **Route 53**
+or your DNS provider.
 
 ## License
 
