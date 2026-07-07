@@ -43,6 +43,7 @@ and reliably on **Amazon S3** static website hosting, optionally fronted by
     ├── common.sh         # shared helpers (config + AWS wrappers)
     ├── setup-aws.sh      # one-time S3 bucket provisioning
     ├── setup-cloudfront.sh # optional: HTTPS/CDN via CloudFront + OAC
+    ├── setup-domain.sh   # optional: attach a custom domain (ACM + Route 53)
     └── deploy-aws.sh     # upload the site to S3
 ```
 
@@ -151,10 +152,25 @@ distribution takes 5–15 minutes to finish deploying before its URL is live.
 
 ### Custom domain
 
-For a custom domain (e.g. `www.example.org`), request a certificate in **AWS
-Certificate Manager** (in `us-east-1`), add the domain as an alternate name on
-the distribution, and point your DNS at the CloudFront domain with **Route 53**
-or your DNS provider.
+Once the distribution exists and your domain's **public hosted zone** is in
+Route 53, attach the domain with:
+
+```bash
+./deploy/setup-domain.sh --domain tachyon.org        # add --wait to block
+```
+
+This script:
+
+- requests an **ACM certificate** in `us-east-1` (required for CloudFront) for
+  the apex domain and its `www` subdomain, validated via DNS;
+- creates the DNS **validation records** in Route 53 and waits for issuance;
+- adds the domain names as **aliases** on the distribution and attaches the
+  certificate (SNI, TLS 1.2+);
+- creates Route 53 **alias A/AAAA records** pointing the domain at CloudFront.
+
+Pass `--no-www` for the apex domain only, or `--hosted-zone-id` to override
+auto-detection. After it runs, allow a few minutes for the distribution to
+redeploy and DNS to propagate, then the site is live at `https://<domain>`.
 
 ## License
 
