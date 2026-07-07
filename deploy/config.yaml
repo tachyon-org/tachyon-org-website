@@ -30,4 +30,4 @@ error_document: error.html
 
 # Optional CloudFront distribution ID. If set, `deploy-aws.sh` will issue a
 # cache invalidation after uploading. Leave blank to skip.
-cloudfront_distribution_id: ""
+cloudfront_distribution_id: E3L8S7S5NJ919D

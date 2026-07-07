@@ -44,6 +44,7 @@ and reliably on **Amazon S3** static website hosting, optionally fronted by
     ├── setup-aws.sh      # one-time S3 bucket provisioning
     ├── setup-cloudfront.sh # optional: HTTPS/CDN via CloudFront + OAC
     ├── setup-domain.sh   # optional: attach a custom domain (ACM + Route 53)
+    ├── setup-all.sh      # optional: run CloudFront + domain in one command
     └── deploy-aws.sh     # upload the site to S3
 ```
 
@@ -108,6 +109,21 @@ serve the site privately through CloudFront with Origin Access Control.
 
 After a successful deploy the script prints the live S3 website endpoint, e.g.
 `http://tachyon-resilient-modeling.s3-website-us-west-2.amazonaws.com`.
+
+### One-command HTTPS + domain setup
+
+To run the whole CloudFront + custom-domain pipeline in a single command:
+
+```bash
+./deploy/setup-all.sh --wait
+```
+
+`setup-all.sh` orchestrates the steps in order — create the CloudFront
+distribution, then attach the custom domain (certificate + DNS). It is safe to
+re-run: if a distribution already exists it skips that step (use `--force` to
+recreate). Add `--deploy` to upload the site first, or `--no-domain` to stop
+after CloudFront. Flags like `--domain`, `--bucket`, `--region`, and `--profile`
+are passed through to the underlying scripts.
 
 ### Common overrides
 
