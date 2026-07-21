@@ -27,17 +27,28 @@
   </header>
 
   <section class="hero">
-    <div class="hero-inner">
-      <div class="eyebrow">Resilient Computational Science</div>
-      <h1>Tachyon Resilient Modeling</h1>
-      <p>
-        Methods, tools, and open datasets for building computational models
-        that stay accurate and dependable under uncertainty, faults, and
-        incomplete data.
-      </p>
-      <div class="btn-row">
-        <a class="btn btn-primary" href="tools.html">Explore Tools &amp; Data</a>
-        <a class="btn btn-ghost" href="publications.html">Read the Research</a>
+    <div class="hero-inner hero-row">
+      <div class="hero-content">
+        <div class="eyebrow">Resilient Computational Science</div>
+        <h1>Tachyon Resilient Modeling</h1>
+        <p>
+          Tachyon is a Dept. of Energy-funded research project developing methods, tools, and open datasets for building computational models that can model complex domain science workflows.  These models are designed to provide multi-scale, multi-fidelity modeling that allows for end-to-end modeling of data analysis pipelines for High Energy Physics.
+          </p>
+          <p>
+          Our models are designed to allow for reseraches to probe and predict the operational behavior of the data pipelines and to explore deviations from expected behavior to understand fault conditions and to harden our systems against failure modes.
+          </p>
+        <div class="btn-row">
+          <a class="btn btn-primary" href="tools.html">Explore Tools &amp; Data</a>
+          <a class="btn btn-ghost" href="publications.html">Read the Research</a>
+        </div>
+      </div>
+      <ul class="partner-logos" aria-label="Partner institutions">
+        <li><img src="assets/partners/anl.png" alt="Argonne National Laboratory" /></li>
+        <li><img src="assets/partners/fnal.png" alt="Fermilab" /></li>
+        <li><img src="assets/partners/rpi.png" alt="Rensselaer Polytechnic Institute" /></li>
+        <li><img src="assets/partners/ucdavis.png" alt="UC Davis" /></li>
+        <li><img src="assets/partners/uic.png" alt="University of Illinois Chicago" /></li>
+      </ul>
       </div>
     </div>
   </section>
@@ -46,25 +57,18 @@
     <section class="section" id="about">
       <h2>Project Description</h2>
       <p class="lead">
-        The Tachyon Resilient Modeling project develops the theory, algorithms,
-        and software needed to make large-scale computational models
-        <em>resilient</em> &mdash; able to produce trustworthy predictions even
-        when inputs are noisy, components fail, or the system being modeled
-        drifts away from its assumptions.
+        The Tachyon Resilient Modeling project develops the theories, algorithms, software and datasets needed to make large-scale computational models of data processing pipelines.  Our goal is to 
+        make these models both predictive and able to explore the <em>resilience</em> of complex designs to improve them against failure during cricital operations.
       </p>
       <p>
-        Modern scientific and engineering models are increasingly assembled from
-        many coupled components running across heterogeneous, failure-prone
-        computing environments. Our work spans uncertainty quantification,
-        fault-tolerant numerical methods, and reproducible modeling workflows so
-        that results remain valid and explainable as scale and complexity grow.
-        We release the resulting tools, datasets, and source code openly so the
-        broader research community can reproduce and build on our findings.
+        We use descrete timestep modeling combined with AI/ML surrogate techniques to model different stages and steps in a given workflow.  We then perturb these models to explore the operational behavior of the system as a whole.  In particular we are interested in realtime triggering and data processing that is used by high energy physics experiments to detect and analyze rare events.
+      </p>
+      <p>
+        In addition to our modelling work, we are also developing open datasets for model training and evaluation which are based on the real operations of high energy physics experiments, their data analysis workflows, and large scale data center operations.  These currated datasets contain not only real world data patterns and operational details, but also include highly detailed information on historic failures.  We hope that these datasets will serve as a foundation for future research and benchmarks that can be used by the community to evaluate the resilience of their own models and workflows.
       </p>
       <p class="note">
         This site collects the project's people, publications, and released
-        research artifacts. Content marked as a placeholder should be replaced
-        with the project's specific details before public launch.
+        research artifacts. 
       </p>
     </section>
 
