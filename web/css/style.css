@@ -384,6 +384,19 @@ main {
 .resource .kind.code {
   background: #57d38c;
 }
+.status-badge {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--text-muted);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 0.1rem 0.55rem;
+  margin-left: 0.5rem;
+  vertical-align: middle;
+}
 
 /* ---------- Tables ---------- */
 .table-wrap {
